@@ -150,7 +150,7 @@ void voc_tag_event_handler(bc_tag_voc_lp_t *self, bc_tag_voc_lp_event_t event, v
             {
                 int radio_tvoc = value;
 
-                bc_radio_pub_int("voc-sensor/0:1/tvoc", &radio_tvoc);
+                bc_radio_pub_int("voc-lp-sensor/0:0/tvoc", &radio_tvoc);
 
                 pub_timeout = bc_tick_get() + VOC_PUB_NO_CHANGE_INTEVAL;
 
@@ -196,7 +196,7 @@ void application_init(void)
     bc_data_stream_init(&humidity_stream, 1, &humidity_stream_buffer);
 
     bc_radio_init(BC_RADIO_MODE_NODE_SLEEPING);
-    bc_radio_pairing_request("voc-sensor", VERSION);
+    bc_radio_pairing_request("voc-lp-sensor", VERSION);
 
     bc_module_lcd_init();
     gfx = bc_module_lcd_get_gfx();
