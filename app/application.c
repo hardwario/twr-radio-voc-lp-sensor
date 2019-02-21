@@ -80,7 +80,7 @@ void temperature_tag_event_handler(bc_tag_temperature_t *self, bc_tag_temperatur
         {
             bc_data_stream_feed(&temperature_stream, &temperature);
 
-            if ((fabsf(pub_value - temperature) < TEMPERATURE_PUB_VALUE_CHANGE) || (pub_timeout < bc_tick_get()))
+            if ((fabsf(pub_value - temperature) >= TEMPERATURE_PUB_VALUE_CHANGE) || (pub_timeout < bc_tick_get()))
             {
                 bc_radio_pub_temperature(BC_RADIO_PUB_CHANNEL_R1_I2C0_ADDRESS_DEFAULT, &temperature);
 
@@ -117,7 +117,7 @@ void humidity_tag_event_handler(bc_tag_humidity_t *self, bc_tag_humidity_event_t
         {
             bc_data_stream_feed(&humidity_stream, &humidity);
 
-            if ((fabsf(pub_value - humidity) < HUMIDITY_TAG_PUB_VALUE_CHANGE) || (pub_timeout < bc_tick_get()))
+            if ((fabsf(pub_value - humidity) >= HUMIDITY_TAG_PUB_VALUE_CHANGE) || (pub_timeout < bc_tick_get()))
             {
                 bc_radio_pub_humidity(BC_RADIO_PUB_CHANNEL_R3_I2C0_ADDRESS_DEFAULT, &humidity);
 
@@ -146,7 +146,7 @@ void voc_tag_event_handler(bc_tag_voc_lp_t *self, bc_tag_voc_lp_event_t event, v
         {
             tvoc = value;
 
-            if ((fabsf(pub_value - value) < VOC_PUB_VALUE_CHANGE) || (pub_timeout < bc_tick_get()))
+            if ((fabsf(pub_value - value) >= VOC_PUB_VALUE_CHANGE) || (pub_timeout < bc_tick_get()))
             {
                 int radio_tvoc = value;
 
