@@ -13,7 +13,7 @@ Note: VOC LP Tag will only begin to give valid data after 24 hours of operation.
 
 See the project documentation on this link:
 
-**https://www.bigclown.com/doc/projects/radio-voc-sensor/**
+**https://developers.hardwario.com/projects/radio-voc-sensor/**
 
 ## License
 
